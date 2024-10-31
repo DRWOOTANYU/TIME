@@ -15,6 +15,7 @@ To compile and run this application, you need:
 - `g++` (GNU C++ Compiler).
 - `GTK+ 3.0` development libraries.
 - `libX11` development libraries.
+- `meson` build system.
 
 ### Installing Dependencies
 
@@ -22,11 +23,22 @@ You can install the required libraries on Ubuntu/Debian-based systems using the 
 
 ```bash
 sudo apt-get install build-essential libgtk-3-dev libx11-dev
+```
 
-git clone https://github.com/DRWOOTANYU/TIME.git
+### Building
 
-cd TIME
+This application uses [Meson](https://mesonbuild.com) as its' build system.
 
-g++ time.cpp -o time `pkg-config --cflags --libs gtk+-3.0` -lX11
+```bash
+meson build
+cd build
+meson compile
+```
 
+### Running
+
+You must run the application with `GDK_BACKEND=x11` in your environment:
+
+```bash
 GDK_BACKEND=x11 ./time
+```
