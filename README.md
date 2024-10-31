@@ -23,9 +23,9 @@ You can install the required libraries on Ubuntu/Debian-based systems using the 
 ```bash
 sudo apt-get install build-essential libgtk-3-dev libx11-dev
 
-git clone https://github.com/DRWOOTANYU/MyTIME.git
+git clone https://github.com/DRWOOTANYU/TIME.git
 
-cd MyTIME
+cd TIME
 
 g++ time.cpp -o time `pkg-config --cflags --libs gtk+-3.0` -lX11
 
