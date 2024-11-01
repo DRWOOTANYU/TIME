@@ -98,6 +98,17 @@ int main(int argc, char *argv[]) {
     gtk_window_set_resizable(GTK_WINDOW(window), FALSE);
     gtk_window_set_decorated(GTK_WINDOW(window), FALSE);
     gtk_widget_set_opacity(GTK_WIDGET(window), 0.7);
+
+    GdkDisplay *display = gdk_display_get_default();
+    GdkMonitor *primary_monitor = gdk_display_get_primary_monitor(display);
+    if (primary_monitor) {
+        GdkRectangle monitor_geometry;
+        gdk_monitor_get_geometry(primary_monitor, &monitor_geometry);
+        int x = monitor_geometry.x + (monitor_geometry.width - 250) / 2;
+        int y = monitor_geometry.y + (monitor_geometry.height - 120) / 2;
+        gtk_window_move(GTK_WINDOW(window), x, y);
+    }
+
     GtkWidget *label = gtk_label_new(nullptr);
     gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_CENTER);
     gtk_container_add(GTK_CONTAINER(window), label);
